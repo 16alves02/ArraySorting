@@ -5,8 +5,8 @@
 const int Limit = 10;
 
 /*
-    Menu principal do programa.
-    Aqui só trato da apresentação — não mexo em lógica nenhuma.
+    PT: Menu principal do programa. Apenas trata da apresentação.
+    EN: Main menu of the program. Only handles the visual layout.
 */
 void Menu() {
     printf("\n"
@@ -23,8 +23,8 @@ void Menu() {
 }
 
 /*
-    Lê 10 números do utilizador e guarda no array.
-    Simples e direto.
+    PT: Lê 10 números do utilizador e guarda-os no array.
+    EN: Reads 10 numbers from the user and stores them in the array.
 */
 void ReadArray(int a[Limit]) {
     printf("Enter %d numbers:\n", Limit);
@@ -35,7 +35,8 @@ void ReadArray(int a[Limit]) {
 }
 
 /*
-    Escreve o array no ecrã.
+    PT: Escreve o array no ecrã.
+    EN: Prints the array to the screen.
 */
 void WriteArray(int a[Limit]) {
     for (int i = 0; i < Limit; i++) {
@@ -45,8 +46,8 @@ void WriteArray(int a[Limit]) {
 }
 
 /*
-    Selection Sort:
-    Procura sempre o menor elemento e coloca-o na posição correta.
+    PT: Selection Sort — procura sempre o menor elemento e coloca-o na posição correta.
+    EN: Selection Sort — always finds the smallest element and places it in the correct position.
 */
 void SelectionSort(int a[Limit]) {
     int c, d, position, t;
@@ -59,7 +60,8 @@ void SelectionSort(int a[Limit]) {
                 position = d;
         }
 
-        // Troca se encontrou um valor mais pequeno
+        // PT: Troca se encontrou um valor mais pequeno.
+        // EN: Swaps if a smaller value was found.
         if (position != c) {
             t = a[c];
             a[c] = a[position];
@@ -69,8 +71,8 @@ void SelectionSort(int a[Limit]) {
 }
 
 /*
-    Insertion Sort:
-    Vai inserindo cada elemento na posição correta da parte já ordenada.
+    PT: Insertion Sort — insere cada elemento na posição correta da parte já ordenada.
+    EN: Insertion Sort — inserts each element into the correct position of the sorted section.
 */
 void InsertionSort(int a[Limit]) {
     int c, d, t, flag = 0;
@@ -92,8 +94,8 @@ void InsertionSort(int a[Limit]) {
 }
 
 /*
-    Bubble Sort:
-    Compara pares consecutivos e troca se estiverem fora de ordem.
+    PT: Bubble Sort — compara pares consecutivos e troca se estiverem fora de ordem.
+    EN: Bubble Sort — compares adjacent pairs and swaps them if they are out of order.
 */
 void BubbleSort(int a[Limit]) {
     int c, d, swap;
@@ -110,8 +112,8 @@ void BubbleSort(int a[Limit]) {
 }
 
 /*
-    Verifica se o array está ordenado.
-    Função usada pelo BogoSort.
+    PT: Verifica se o array está ordenado (usado no BogoSort).
+    EN: Checks if the array is sorted (used by BogoSort).
 */
 bool IsSorted(int *a, int n) {
     while (--n >= 1) {
@@ -122,8 +124,8 @@ bool IsSorted(int *a, int n) {
 }
 
 /*
-    Baralha o array aleatoriamente.
-    Parte essencial do BogoSort.
+    PT: Baralha o array aleatoriamente.
+    EN: Randomly shuffles the array.
 */
 void Shuffle(int *a, int n) {
     int i, t, r;
@@ -136,9 +138,8 @@ void Shuffle(int *a, int n) {
 }
 
 /*
-    BogoSort:
-    Ordena por tentativa e erro — baralha até ficar ordenado.
-    É péssimo em performance, mas divertido para demonstrar.
+    PT: BogoSort — baralha até ficar ordenado (muito ineficiente).
+    EN: BogoSort — shuffles until sorted (extremely inefficient).
 */
 void BogoSort(int *a, int n) {
     while (!IsSorted(a, n))
@@ -146,7 +147,8 @@ void BogoSort(int *a, int n) {
 }
 
 /*
-    Fecha o programa de forma limpa.
+    PT: Fecha o programa de forma limpa.
+    EN: Closes the program cleanly.
 */
 void ExitProgram() {
     printf("Your program has been closed. Goodbye!\n");
@@ -198,7 +200,8 @@ int main() {
         break;
 
     case 4:
-        // Exemplo fixo para demonstrar o BogoSort
+        // PT: Exemplo fixo para demonstrar o BogoSort.
+        // EN: Fixed example to demonstrate BogoSort.
         int numbers[] = {1, 10, 9, 7, 3, 0};
         int i;
 
