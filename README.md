@@ -22,7 +22,7 @@ When the program starts, it presents a menu with four sorting options:
 2. **Insertion Sort**
 3. **Bubble Sort**
 4. **Bogo Sort**
-5. Exit
+0. Exit
 
 For the first three algorithms, the program asks the user for **10 integers**, displays the original array and then prints the result in ascending order.
 
@@ -93,6 +93,12 @@ Enter 10 numbers:
 Ascending Order:
 2 5 9 ...
 ```
+
+## ⚠️ Scope & Limitations
+
+- The main sorting flow uses a fixed limit of **10 integers**.
+- The program performs one selected operation and then terminates.
+- **Bogo Sort** is deliberately inefficient and can take an unpredictable amount of time, so it is only suitable for the small built-in demonstration array.
 
 ## 🛠️ Tech Stack
 
