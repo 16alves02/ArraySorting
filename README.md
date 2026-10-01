@@ -1,68 +1,97 @@
 # 🔢 ArraySorting
 
-> A C console application for exploring classic array sorting algorithms.
+> **Sorting fundamentals, one algorithm at a time.**
 
 [![C](https://img.shields.io/badge/C-Programming%20Language-A8B9CC?style=flat-square&logo=c&logoColor=111111)](https://en.wikipedia.org/wiki/C_(programming_language))
-[![Algorithms](https://img.shields.io/badge/Focus-Algorithms-111111?style=flat-square)](https://en.wikipedia.org/wiki/Sorting_algorithm)
+[![Algorithms](https://img.shields.io/badge/Focus-Sorting%20Algorithms-111111?style=flat-square)](https://en.wikipedia.org/wiki/Sorting_algorithm)
+[![Copyright](https://img.shields.io/badge/Code-Proprietary-111111?style=flat-square)](LICENSE)
 
-## Overview
+## 📌 About
 
-**ArraySorting** is a small interactive C program that demonstrates several classic sorting algorithms through a console-based menu.
+**ArraySorting** is a small interactive console application written in **C** to explore how classic sorting algorithms work.
 
-The project is intentionally simple and educational. Instead of hiding the sorting process behind a library function, it keeps the algorithms visible so their logic can be studied and compared.
+The project works with integer arrays and exposes the sorting logic directly through a simple terminal menu. Instead of hiding the work behind library functions, each algorithm is implemented explicitly so its behaviour can be read, compiled and studied.
 
-## 🎯 Why I Built It
+The project dates back to **2023** and was later revisited with clearer documentation and bilingual code comments.
 
-The project was created as a practical exercise in programming fundamentals and algorithmic thinking.
+## 🎯 What the Program Does
 
-It helped me work with:
+When the program starts, it presents a menu with four sorting options:
 
-- Arrays
-- Loops and conditionals
-- Functions
-- User input and output
-- Menu-driven programs
-- Algorithm implementation
-- Checking whether data is sorted
+1. **Selection Sort**
+2. **Insertion Sort**
+3. **Bubble Sort**
+4. **Bogo Sort**
+5. Exit
 
-The goal is to understand the mechanics behind sorting rather than simply using a ready-made function.
+For the first three algorithms, the program asks the user for **10 integers**, displays the original array and then prints the result in ascending order.
+
+Bogo Sort uses a small fixed demonstration array and repeatedly shuffles it until it becomes sorted.
 
 ## 🧠 Algorithms
 
 ### Selection Sort
 
-Repeatedly finds the smallest element in the unsorted portion of the array and places it in the correct position.
+Searches the unsorted portion of the array for the smallest value and moves it into its correct position.
 
 ### Insertion Sort
 
-Builds the sorted portion of the array one element at a time by inserting each new value into its appropriate position.
+Builds the sorted portion of the array one element at a time, inserting each value into its appropriate position.
 
 ### Bubble Sort
 
-Repeatedly compares neighbouring elements and swaps them when they are in the wrong order.
+Repeatedly compares neighbouring values and swaps them when they are in the wrong order.
 
 ### Bogo Sort
 
-Included as an intentionally inefficient educational example. It repeatedly shuffles the array until it happens to be sorted.
+Randomly shuffles the array until it happens to be sorted.
 
-> Bogo Sort is included for demonstration only and should not be used for practical sorting.
+> ⚠️ Bogo Sort is intentionally inefficient and is included for educational demonstration only.
 
-## ⚙️ How It Works
+## 🏗️ Program Structure
 
-The program provides an interactive console flow where the user can work with an array and choose a sorting algorithm.
+The application keeps the implementation deliberately small and focused.
 
-At a high level:
+| Function | Responsibility |
+| --- | --- |
+| `Menu()` | Displays the main menu |
+| `ReadArray()` | Reads the 10 input values |
+| `WriteArray()` | Prints an array |
+| `SelectionSort()` | Implements Selection Sort |
+| `InsertionSort()` | Implements Insertion Sort |
+| `BubbleSort()` | Implements Bubble Sort |
+| `IsSorted()` | Checks whether an array is sorted |
+| `Shuffle()` | Randomly rearranges an array |
+| `BogoSort()` | Demonstrates Bogo Sort |
+| `ExitProgram()` | Closes the application |
+
+The program uses a fixed limit of **10 integers** for the main sorting flow.
+
+## 💻 Example
 
 ```text
-Create / load array
-       ↓
-Choose sorting algorithm
-       ↓
-Run algorithm
-       ↓
-Display result
-       ↓
-Check sorted state
++------------------------------------+
+|           ARRAY SORTING            |
+|------------------------------------|
+| 1 - Selection Sort                 |
+| 2 - Insertion Sort                 |
+| 3 - Bubble Sort                    |
+| 4 - Bogo Sort                      |
+|                                    |
+| 0 - Exit Program                   |
++------------------------------------+
+
+Enter your choice: 1
+
+Selection Sort
+Enter 10 numbers:
+0: 5
+1: 2
+2: 9
+...
+
+Ascending Order:
+2 5 9 ...
 ```
 
 ## 🛠️ Tech Stack
@@ -71,13 +100,13 @@ Check sorted state
 - Standard C library
 - Console input/output
 
-No external dependencies are required.
+No external packages or frameworks are required.
 
 ## 🚀 Getting Started
 
 ### Requirements
 
-A C compiler such as:
+Any C compiler capable of compiling a standard C source file, such as:
 
 - GCC
 - Clang
@@ -91,37 +120,40 @@ git clone https://github.com/16alves02/ArraySorting.git
 cd ArraySorting
 ```
 
-### Compile
-
-For GCC:
+### Compile with GCC
 
 ```bash
-gcc *.c -o ArraySorting
+gcc "Array Sorting.c" -o ArraySorting
 ```
 
 ### Run
 
-On Linux or macOS:
+Linux/macOS:
 
 ```bash
 ./ArraySorting
 ```
 
-On Windows:
+Windows:
 
 ```bash
 ArraySorting.exe
 ```
 
-## 📚 What This Project Represents
+## 📚 Why This Project Matters
 
-ArraySorting is one of the smaller projects in the **16alves02** portfolio, but it represents an important part of learning software development: understanding the fundamentals before building on top of abstractions.
+ArraySorting is one of the earliest projects in the **16alves02** portfolio. It represents the more fundamental side of software development: understanding algorithms, arrays, loops, functions, input/output and program flow before moving into larger application architectures.
+
+## 🗓️ Project History
+
+- **2023** - Original project created and published.
+- **2026** - Code comments, formatting and documentation were revisited.
+- **2026** - README and project copyright information were refreshed.
 
 ## 👤 Author
 
 **Leonardo Alves - [@16alves02](https://github.com/16alves02)**
 
-Part of the **16alves02** project portfolio.
 ## 📜 License & Copyright
 
 **Copyright (c) 2023-2026 Leonardo Alves (16alves02). All rights reserved.**
