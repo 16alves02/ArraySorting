@@ -109,10 +109,22 @@ void BogoSort(int numbers[], int size) {
     }
 }
 
-bool RunSort(const char *name, void (*sortFunction)(int[LIMIT])) {
+bool RunSort(int choice) {
     int numbers[LIMIT];
 
-    printf("\n%s\n", name);
+    switch (choice) {
+        case 1:
+            printf("\nSelection Sort\n");
+            break;
+        case 2:
+            printf("\nInsertion Sort\n");
+            break;
+        case 3:
+            printf("\nBubble Sort\n");
+            break;
+        default:
+            return false;
+    }
 
     if (!ReadArray(numbers)) {
         return false;
@@ -121,7 +133,19 @@ bool RunSort(const char *name, void (*sortFunction)(int[LIMIT])) {
     printf("\nOriginal array:\n");
     WriteArray(numbers);
 
-    sortFunction(numbers);
+    switch (choice) {
+        case 1:
+            SelectionSort(numbers);
+            break;
+        case 2:
+            InsertionSort(numbers);
+            break;
+        case 3:
+            BubbleSort(numbers);
+            break;
+        default:
+            return false;
+    }
 
     printf("\nSorted array (ascending):\n");
     WriteArray(numbers);
@@ -148,19 +172,19 @@ int main(void) {
                 return 0;
 
             case 1:
-                if (!RunSort("Selection Sort", SelectionSort)) {
+                if (!RunSort(choice)) {
                     return 1;
                 }
                 break;
 
             case 2:
-                if (!RunSort("Insertion Sort", InsertionSort)) {
+                if (!RunSort(choice)) {
                     return 1;
                 }
                 break;
 
             case 3:
-                if (!RunSort("Bubble Sort", BubbleSort)) {
+                if (!RunSort(choice)) {
                     return 1;
                 }
                 break;
