@@ -1,169 +1,79 @@
-# 🔢 ArraySorting
+# ArraySorting
 
-> **Sorting fundamentals, one algorithm at a time.**
+A small interactive console program in C for learning how classic sorting algorithms work. The code implements each algorithm directly and prints the original and sorted arrays so the steps are easy to inspect.
 
-[![C](https://img.shields.io/badge/C-Programming%20Language-A8B9CC?style=flat-square&logo=c&logoColor=111111)](https://en.wikipedia.org/wiki/C_(programming_language))
-[![Algorithms](https://img.shields.io/badge/Focus-Sorting%20Algorithms-111111?style=flat-square)](https://en.wikipedia.org/wiki/Sorting_algorithm)
-[![Copyright](https://img.shields.io/badge/Code-Proprietary-111111?style=flat-square)](LICENSE)
+## Algorithms
 
-## 📌 About
+| Algorithm | Main idea | Typical time complexity |
+| --- | --- | --- |
+| Selection Sort | Find the smallest remaining value and put it in the next position. | O(n²) |
+| Insertion Sort | Insert each value into the correct position in the sorted part. | O(n²) worst case; O(n) best case |
+| Bubble Sort | Compare neighbouring values and swap them when they are out of order. | O(n²) |
+| Bogo Sort | Shuffle values until the array happens to be sorted. | Unpredictable; not suitable for real data |
 
-**ArraySorting** is a small interactive console application written in **C** to explore how classic sorting algorithms work.
+Bogo Sort is included only as a small demonstration using six fixed values. Its running time is unpredictable, so it should not be used with large arrays.
 
-The project works with integer arrays and exposes the sorting logic directly through a simple terminal menu. Instead of hiding the work behind library functions, each algorithm is implemented explicitly so its behaviour can be read, compiled and studied.
+## Features
 
-The project dates back to **2023** and was later revisited with clearer documentation and bilingual code comments.
+- Menu-driven console interface that keeps running until the user exits.
+- Selection Sort, Insertion Sort and Bubble Sort run on ten integers entered by the user.
+- Shows the original array and the ascending result.
+- Checks menu input and reports non-numeric values in the sorting input.
+- Includes a small Bogo Sort demonstration.
 
-## 🎯 What the Program Does
+## Requirements
 
-When the program starts, it presents a menu with four sorting options:
+A C compiler such as GCC or Clang. No external libraries are needed.
 
-1. **Selection Sort**
-2. **Insertion Sort**
-3. **Bubble Sort**
-4. **Bogo Sort**
-0. Exit
+## Build and run
 
-For the first three algorithms, the program asks the user for **10 integers**, displays the original array and then prints the result in ascending order.
-
-Bogo Sort uses a small fixed demonstration array and repeatedly shuffles it until it becomes sorted.
-
-## 🧠 Algorithms
-
-### Selection Sort
-
-Searches the unsorted portion of the array for the smallest value and moves it into its correct position.
-
-### Insertion Sort
-
-Builds the sorted portion of the array one element at a time, inserting each value into its appropriate position.
-
-### Bubble Sort
-
-Repeatedly compares neighbouring values and swaps them when they are in the wrong order.
-
-### Bogo Sort
-
-Randomly shuffles the array until it happens to be sorted.
-
-> ⚠️ Bogo Sort is intentionally inefficient and is included for educational demonstration only.
-
-## 🏗️ Program Structure
-
-The application keeps the implementation deliberately small and focused.
-
-| Function | Responsibility |
-| --- | --- |
-| `Menu()` | Displays the main menu |
-| `ReadArray()` | Reads the 10 input values |
-| `WriteArray()` | Prints an array |
-| `SelectionSort()` | Implements Selection Sort |
-| `InsertionSort()` | Implements Insertion Sort |
-| `BubbleSort()` | Implements Bubble Sort |
-| `IsSorted()` | Checks whether an array is sorted |
-| `Shuffle()` | Randomly rearranges an array |
-| `BogoSort()` | Demonstrates Bogo Sort |
-| `ExitProgram()` | Closes the application |
-
-The program uses a fixed limit of **10 integers** for the main sorting flow.
-
-## 💻 Example
-
-```text
-+------------------------------------+
-|           ARRAY SORTING            |
-|------------------------------------|
-| 1 - Selection Sort                 |
-| 2 - Insertion Sort                 |
-| 3 - Bubble Sort                    |
-| 4 - Bogo Sort                      |
-|                                    |
-| 0 - Exit Program                   |
-+------------------------------------+
-
-Enter your choice: 1
-
-Selection Sort
-Enter 10 numbers:
-0: 5
-1: 2
-2: 9
-...
-
-Ascending Order:
-2 5 9 ...
-```
-
-## ⚠️ Scope & Limitations
-
-- The main sorting flow uses a fixed limit of **10 integers**.
-- The program performs one selected operation and then terminates.
-- **Bogo Sort** is deliberately inefficient and can take an unpredictable amount of time, so it is only suitable for the small built-in demonstration array.
-
-## 🛠️ Tech Stack
-
-- C
-- Standard C library
-- Console input/output
-
-No external packages or frameworks are required.
-
-## 🚀 Getting Started
-
-### Requirements
-
-Any C compiler capable of compiling a standard C source file, such as:
-
-- GCC
-- Clang
-- MinGW
-- Visual Studio C compiler
-
-### Clone
+Clone the repository:
 
 ```bash
 git clone https://github.com/16alves02/ArraySorting.git
 cd ArraySorting
 ```
 
-### Compile with GCC
+Compile with warnings enabled:
 
 ```bash
-gcc "Array Sorting.c" -o ArraySorting
+gcc -std=c11 -Wall -Wextra -Wpedantic "Array Sorting.c" -o ArraySorting
 ```
 
-### Run
-
-Linux/macOS:
+Run on Linux or macOS:
 
 ```bash
 ./ArraySorting
 ```
 
-Windows:
+On Windows with MinGW, run:
 
 ```bash
 ArraySorting.exe
 ```
 
-## 📚 Why This Project Matters
+## Manual test checklist
 
-ArraySorting is one of the earliest projects in the **16alves02** portfolio. It represents the more fundamental side of software development: understanding algorithms, arrays, loops, functions, input/output and program flow before moving into larger application architectures.
+- Run each of the three main sorting algorithms with ten mixed integers.
+- Try negative numbers, duplicate values, an already sorted list and a reverse-sorted list.
+- Confirm every algorithm prints the values in ascending order.
+- Enter a menu choice outside the range 0 to 4.
+- Enter a non-numeric value for a menu choice or array element and confirm the program reports invalid input.
+- Run Bogo Sort and confirm its six demonstration values appear in ascending order.
+- Exit with option 0.
 
-## 🗓️ Project History
+## What this project demonstrates
 
-- **2023** - Original project created and published.
-- **2026** - Code comments, formatting and documentation were revisited.
-- **2026** - README and project copyright information were refreshed.
+This project practises arrays, loops, functions, conditional statements, input/output, swapping values, random numbers and the logic behind basic sorting algorithms. The implementation stays close to introductory C concepts so each function can be studied independently.
 
-## 👤 Author
+## Limitations
 
-**Leonardo Alves - [@16alves02](https://github.com/16alves02)**
+- The three main sorting algorithms use a fixed array of ten integers.
+- Invalid numeric input ends the current program run rather than prompting again.
+- Bogo Sort is intentionally inefficient and is only intended as a demonstration.
 
-## 📜 License & Copyright
+## Author
 
-**Copyright (c) 2023-2026 Leonardo Alves (16alves02). All rights reserved.**
+Leonardo Alves · [@16alves02](https://github.com/16alves02) · [Portfolio](https://16alves02-com.vercel.app/)
 
-This project is **not open source**. The source code is published for viewing and educational reference, but it may not be copied, redistributed, modified for public or commercial use, sublicensed, sold, or presented as someone else's work without prior written permission.
-
-See the [LICENSE](./LICENSE) file for the full terms.
+See [LICENSE](LICENSE) for the terms under which this source code may be used.
