@@ -1,0 +1,45 @@
+name: ArraySorting CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Compile and smoke-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1636f1aa28c5f0c7c3a2d79c8 # v4.2.2
+      - name: Install GCC
+        run: sudo apt-get update && sudo apt-get install --yes gcc
+      - name: Compile with strict warnings
+        run: |
+          mkdir -p build
+          gcc -std=c11 -Wall -Wextra -Wpedantic -Werror "Array Sorting.c" -o build/array-sorting
+      - name: Test the three sorting algorithms
+        shell: bash
+        run: |
+          set -euo pipefail
+          input='-4 7 0 2 -1 9 3 3 1 5'
+          expected=$'-4\t-1\t0\t1\t2\t3\t3\t5\t7\t9'
+          for choice in 1 2 3; do
+            output="$(printf '%s\n%s\n0\n' "$choice" "$input" | build/array-sorting)"
+            grep -Fq -- "Sorted array (ascending):" <<< "$output"
+            grep -Fq -- "$expected" <<< "$output"
+          done
+      - name: Test the Bogo Sort demonstration
+        run: |
+          output="$(printf '4\n0\n' | build/array-sorting)"
+          grep -Fq -- "Bogo Sort result:" <<< "$output"
+          grep -Fq -- "0 1 3 7 9 10" <<< "$output"
