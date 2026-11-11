@@ -1,4 +1,5 @@
-#include <assert.h>\n#include <limits.h>
+#include <assert.h>
+#include <limits.h>
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -66,7 +67,7 @@ static void test_all_equal(SortFunction sort, const char *name) {
     for (int i = 0; i < LIMIT; i++) actual[i] = 4;
     sort(actual);
     assert_array_equal(actual, expected);
-    printf("PASS: %s handles an all-equal array\\n", name);
+    printf("PASS: %s handles an all-equal array\n", name);
 }
 
 static void test_integer_boundaries(SortFunction sort, const char *name) {
@@ -77,7 +78,7 @@ static void test_integer_boundaries(SortFunction sort, const char *name) {
     for (int i = 0; i < LIMIT; i++) actual[i] = input[i];
     sort(actual);
     assert_array_equal(actual, expected);
-    printf("PASS: %s handles integer boundaries\\n", name);
+    printf("PASS: %s handles integer boundaries\n", name);
 }
 
 static void test_is_sorted(void) {
@@ -86,7 +87,8 @@ static void test_is_sorted(void) {
 
     assert(IsSorted(sorted, 4));
     assert(!IsSorted(unsorted, 4));
-    assert(IsSorted(NULL, 0));\n    assert(IsSorted(NULL, -1));
+    assert(IsSorted(NULL, 0));
+    assert(IsSorted(NULL, -1));
     printf("PASS: IsSorted handles sorted, unsorted and empty arrays\n");
 }
 
