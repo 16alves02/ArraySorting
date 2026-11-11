@@ -1,4 +1,4 @@
-#include <assert.h>
+#include <assert.h>\n#include <limits.h>
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -59,13 +59,34 @@ static void test_reverse_sorted(SortFunction sort, const char *name) {
     printf("PASS: %s sorts a reverse-ordered array\n", name);
 }
 
+static void test_all_equal(SortFunction sort, const char *name) {
+    const int expected[LIMIT] = {4, 4, 4, 4, 4, 4, 4, 4, 4, 4};
+    int actual[LIMIT];
+
+    for (int i = 0; i < LIMIT; i++) actual[i] = 4;
+    sort(actual);
+    assert_array_equal(actual, expected);
+    printf("PASS: %s handles an all-equal array\\n", name);
+}
+
+static void test_integer_boundaries(SortFunction sort, const char *name) {
+    const int input[LIMIT] = {INT_MAX, 0, INT_MIN, -1, 1, INT_MAX, INT_MIN, 42, -42, 0};
+    const int expected[LIMIT] = {INT_MIN, INT_MIN, -42, -1, 0, 0, 1, 42, INT_MAX, INT_MAX};
+    int actual[LIMIT];
+
+    for (int i = 0; i < LIMIT; i++) actual[i] = input[i];
+    sort(actual);
+    assert_array_equal(actual, expected);
+    printf("PASS: %s handles integer boundaries\\n", name);
+}
+
 static void test_is_sorted(void) {
     const int sorted[] = {-2, 0, 0, 7};
     const int unsorted[] = {-2, 3, 1, 7};
 
     assert(IsSorted(sorted, 4));
     assert(!IsSorted(unsorted, 4));
-    assert(IsSorted(NULL, 0));
+    assert(IsSorted(NULL, 0));\n    assert(IsSorted(NULL, -1));
     printf("PASS: IsSorted handles sorted, unsorted and empty arrays\n");
 }
 
@@ -96,6 +117,14 @@ int main(void) {
     test_reverse_sorted(SelectionSort, "Selection Sort");
     test_reverse_sorted(InsertionSort, "Insertion Sort");
     test_reverse_sorted(BubbleSort, "Bubble Sort");
+
+    test_all_equal(SelectionSort, "Selection Sort");
+    test_all_equal(InsertionSort, "Insertion Sort");
+    test_all_equal(BubbleSort, "Bubble Sort");
+
+    test_integer_boundaries(SelectionSort, "Selection Sort");
+    test_integer_boundaries(InsertionSort, "Insertion Sort");
+    test_integer_boundaries(BubbleSort, "Bubble Sort");
 
     test_is_sorted();
     test_shuffle_preserves_values();
