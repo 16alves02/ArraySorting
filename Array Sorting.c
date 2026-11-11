@@ -152,6 +152,7 @@ bool RunSort(int choice) {
     return true;
 }
 
+#ifndef ARRAY_SORTING_TEST
 int main(void) {
     int choice;
 
@@ -172,17 +173,7 @@ int main(void) {
                 return 0;
 
             case 1:
-                if (!RunSort(choice)) {
-                    return 1;
-                }
-                break;
-
             case 2:
-                if (!RunSort(choice)) {
-                    return 1;
-                }
-                break;
-
             case 3:
                 if (!RunSort(choice)) {
                     return 1;
@@ -208,3 +199,4 @@ int main(void) {
         }
     }
 }
+#endif
