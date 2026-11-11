@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   build-and-test:
-    name: Compile and smoke-test
+    name: Compile and test
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -27,7 +27,11 @@ jobs:
         run: |
           mkdir -p build
           gcc -std=c11 -Wall -Wextra -Wpedantic -Werror "Array Sorting.c" -o build/array-sorting
-      - name: Test the three sorting algorithms
+      - name: Run algorithm unit tests
+        run: |
+          gcc -std=c11 -Wall -Wextra -Wpedantic -Werror -DARRAY_SORTING_TEST "Array Sorting.c" tests/sorting_tests.c -o build/sorting-tests
+          build/sorting-tests
+      - name: Test the interactive menu and sorting output
         shell: bash
         run: |
           set -euo pipefail
