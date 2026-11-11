@@ -22,6 +22,7 @@ Bogo Sort is included only as a demonstration using six fixed values. Its runnin
 - Displays the original array and the result in ascending order.
 - Validates menu choices and reports non-numeric input.
 - Includes a small Bogo Sort demonstration.
+- Automated C tests for mixed values, negative numbers, duplicates, already sorted arrays, reverse order, sorted-state checks and shuffle permutation integrity.
 
 ## Requirements
 
@@ -55,21 +56,16 @@ On Windows with MinGW, run:
 ArraySorting.exe
 ```
 
-## Manual testing checklist
+## Automated tests
 
-There is no automated test suite yet. After changing the code, use this checklist to check the main behaviours:
+Run the algorithm tests locally with:
 
-- Run each of the three main algorithms with ten mixed integers.
-- Try negative numbers, duplicate values, an already sorted array and a reverse-sorted array.
-- Confirm each algorithm prints the values in ascending order.
-- Enter a numeric menu choice outside the range 0 to 4.
-- Enter text instead of a number for a menu choice or array element and confirm the program reports invalid input.
-- Run Bogo Sort and confirm its six demonstration values appear in ascending order.
-- Exit with option 0.
+```bash
+gcc -std=c11 -Wall -Wextra -Wpedantic -Werror -DARRAY_SORTING_TEST "Array Sorting.c" tests/sorting_tests.c -o sorting-tests
+./sorting-tests
+```
 
-## What this project demonstrates
-
-This project is practice with arrays, loops, functions, conditionals, input/output, swapping values, random numbers and the logic behind basic sorting algorithms. The code stays close to introductory C concepts so each function can be read and understood independently.
+GitHub Actions also compiles the application with strict warnings, runs these algorithm tests, checks the interactive output of the three main sorting algorithms and verifies the fixed Bogo Sort demonstration.
 
 ## Known limitations
 
